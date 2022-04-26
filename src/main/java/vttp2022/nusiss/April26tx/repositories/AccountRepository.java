@@ -14,13 +14,13 @@ public class AccountRepository {
     private JdbcTemplate template;
 
     public boolean deposit(String accountNo, Float amount){
-        int count = template.update(Queries.SQL_INCREASE_BALANCE_OF_ACCOUNT, accountNo, amount);
+        int count = template.update(Queries.SQL_INCREASE_BALANCE_OF_ACCOUNT,amount ,accountNo);
         
         return 1 == count;
 
     }
     public boolean withdraw(String accountNo, Float amount){
-        int count = template.update(Queries.SQL__DECREASE_BALANCE_OF_ACCOUNT, accountNo, amount);
+        int count = template.update(Queries.SQL__DECREASE_BALANCE_OF_ACCOUNT, amount, accountNo);
         return 1 == count;
     }
 

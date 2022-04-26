@@ -17,11 +17,12 @@ public class AccountService {
             throw new BalanceException("Cannot deposit into your account");
     }
 
-    
+
     public void withdraw(String accountNo, Float amount) throws BalanceException {
         Float balance = accRepo.getBalance(accountNo);
         if (amount > balance){
             throw new BalanceException("Cannot withdraw, u broke");
+            
         }
 
         accRepo.withdraw(accountNo, amount);
