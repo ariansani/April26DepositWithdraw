@@ -34,25 +34,23 @@ public class AccountServiceTest {
     }
 
     @Test
-    void testWithdraw() {
+    void testWithdraw() throws BalanceException {
         Boolean withdrawn = true;
 
         Mockito.when(accRepo.withdraw("arian", 50.0f))
             .thenReturn(withdrawn);
-        accSvc.withdraw("arian", amount);
         assertTrue(withdrawn,"success");
 
 
     }
 
     @Test
-    void testWithdrawMoreShouldFail() {
+    void testWithdrawMoreShouldFail() throws BalanceException {
         Boolean withdrawn = true;
         Boolean exceed = false;
 
         Mockito.when(accRepo.withdraw("arian", 5000000.0f))
             .thenReturn(withdrawn);
-
         assertFalse(exceed,"success");
 
     }
